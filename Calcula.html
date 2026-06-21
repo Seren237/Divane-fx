@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Ma Calculatrice</title>
+    <style>
+        /* Design de la calculatrice */
+        body { font-family: sans-serif;background-image:url(IMG-20250628-WA0152.jpg);background-size:cover;background-attachment:fixed;background-position:center;  display: flex; justify-content: center; padding-top: 50px; }
+        .calculatrice { border: 2px solid #333; border-radius: 10px; padding: 20px;}
+        #ecran { width: 100%; height: 40px; font-size: 24px; text-align: right; margin-bottom: 10px; }
+        .touches { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
+        button { padding: 20px; font-size: 18px; cursor: pointer; border-radius: 5px; border: 1px solid #ccc; }
+        button:hover { background-color: #ddd; }
+        .egal { background-color: #4CAF50; color: white; grid-column: span 2; }
+        .clear { background-color: #ff4d4d; color: white; }
+    p{ color:white; text-aling:center;}
+    strong{color: blue;
+    </style>
+</head>
+<body>
+<div class="calculatrice">
+    <input type="text" id="ecran" disabled>
+    <p><em>Powered by </em><strong>DIVANE-FX</strong></p>
+    <div class="touches">
+        <button class="clear" onclick="effacer()">C</button>
+        <button onclick="ajouter('/')">/</button>
+        <button onclick="ajouter('*')">×</button>
+        <button onclick="ajouter('-')">-</button>
+        
+        <button onclick="ajouter('7')">7</button>
+        <button onclick="ajouter('8')">8</button>
+        <button onclick="ajouter('9')">9</button>
+        <button onclick="ajouter('+')">+</button>
+        
+        <button onclick="ajouter('4')">4</button>
+        <button onclick="ajouter('5')">5</button>
+        <button onclick="ajouter('6')">6</button>
+        <button onclick="ajouter('.')">.</button>
+        
+        <button onclick="ajouter('1')">1</button>
+        <button onclick="ajouter('2')">2</button>
+        <button onclick="ajouter('3')">3</button>
+        <button onclick="ajouter('0')">0</button>
+        
+        <button class="egal" onclick="calculer()">=</button>
+    </div>
+</div>
+
+<script>
+    const ecran = document.getElementById('ecran');
+
+    // Ajoute un chiffre ou un opérateur à l'écran
+    function ajouter(valeur) {
+        ecran.value += valeur;
+    }
+
+    // Efface tout l'écran
+    function effacer() {
+        ecran.value = "";
+    }
+
+    // Calcule le résultat
+    function calculer() {
+        try {
+            // eval() analyse la chaîne de texte et fait le calcul mathématique
+            ecran.value = eval(ecran.value);
+        } catch (e) {
+            ecran.value = "Erreur";
+        }
+    }
+</script>
+
+</body>
+</html>
